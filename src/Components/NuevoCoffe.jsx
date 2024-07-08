@@ -45,7 +45,7 @@ function NuevoCoffe() {
 
   return (
     <>
-      <Navbar />
+      
       <div className="container mx-auto px-5 py-24">
         <h1 className="text-2xl font-bold text-center mb-8">Nuevo Coffee</h1>
         <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-8">
@@ -121,7 +121,7 @@ function NuevoCoffe() {
           </tbody>
         </table>
       </div>
-      <Footer />
+      
     </>
   );
 }

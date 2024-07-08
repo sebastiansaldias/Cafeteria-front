@@ -3,10 +3,13 @@ import React, { useState } from 'react';
 function ProductCard({ name, price, image, description }) {
   const [showModal, setShowModal] = useState(false);
   const [opinion, setOpinion] = useState('');
+  const [opinions, setOpinions] = useState([]); // Estado para almacenar las opiniones
 
   const handleOpinionSubmit = () => {
-    // Aquí puedes manejar el envío de la opinión, por ejemplo, enviarla a un servidor.
+    const newOpinion = { text: opinion, date: new Date().toLocaleString() };
+    setOpinions([...opinions, newOpinion]); // Agrega la nueva opinión al estado
     console.log(`Opinión sobre ${name}: ${opinion}`);
+    setOpinion('');
     setShowModal(false);
   };
 
@@ -19,7 +22,19 @@ function ProductCard({ name, price, image, description }) {
       <p className="text-lg font-semibold mb-3">${price}</p>
       <button onClick={() => setShowModal(true)} className="text-white bg-[#8B5E3C] border-0 py-2 px-8 focus:outline-none hover:bg-[#4B2E39] rounded text-lg">Opiniones</button>
 
-      {showModal ? (
+      {opinions.length > 0 && (
+        <div className="mt-4 text-left">
+          <h3 className="text-lg font-semibold mb-2">Opiniones</h3>
+          {opinions.map((op, index) => (
+            <div key={index} className="mb-2 p-2 bg-gray-100 rounded">
+              <p className="text-sm">{op.text}</p>
+              <p className="text-xs text-gray-500">{op.date}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {showModal && (
         <>
           <div className="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
             <div className="bg-white rounded-lg p-8 m-4 max-w-xs max-h-full text-center overflow-y-auto">
@@ -38,7 +53,7 @@ function ProductCard({ name, price, image, description }) {
             </div>
           </div>
         </>
-      ) : null}
+      )}
     </div>
   );
 }
