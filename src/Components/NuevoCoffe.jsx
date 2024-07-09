@@ -21,17 +21,12 @@ function NuevoCoffe() {
                 }
             });
 
-            console.log("Response status:", response.status);
-            console.log("Response headers:", response.headers);
-
             if (!response.ok) {
                 const errorText = await response.text();
-                console.error('Error del servidor:', errorText);
                 throw new Error(`HTTP error! status: ${response.status}, response: ${errorText}`);
             }
 
             const data = await response.json();
-            console.log("Data:", data);
             setCoffees(data);
         } catch (error) {
             console.error('ERROR al obtener los Coffees:', error);

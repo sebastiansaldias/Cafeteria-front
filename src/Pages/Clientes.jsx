@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../Components/Shared/Navbar';
 import Footer from '../Components/Shared/Footer';
-import Switch from '../Components/Switch';
 
 const Clientes = () => {
   const [users, setUsers] = useState([]);
+  const [loadingStates, setLoadingStates] = useState({});
   const accessToken = localStorage.getItem('token');
   const userRoles = JSON.parse(localStorage.getItem('roles')) || [];
   const API_URL = "http://localhost:8080";
@@ -25,8 +25,7 @@ const Clientes = () => {
         const data = await response.json();
         setUsers(data);
       } catch (error) {
-        console.error('ERROR al obtener los Usuarios:', error);
-        alert('Ha ocurrido un error al obtener los Usuarios');
+        
       }
     }
     getUsers();
@@ -55,7 +54,13 @@ const Clientes = () => {
                 <td className="py-2 px-4 border-b border-gray-200">{user.email}</td>
                 <td className="py-2 px-4 border-b border-gray-200">
                   <div className="flex justify-center">
-                    <Switch username={user.username} state={user.disabled} token={accessToken} />
+                    <input
+                      type="checkbox"
+                      checked={!user.disabled}
+                      onChange={() => handleCheckboxChange(user.username, user.disabled)}
+                      disabled={!userRoles.includes('ADMIN') || loadingStates[user.username]}
+                    />
+                    {loadingStates[user.username] && <span className="ml-2 text-sm text-gray-500">Loading...</span>}
                   </div>
                 </td>
                 <td className="py-2 px-4 border-b border-gray-200">{user.locked ? 'Yes' : 'No'}</td>
