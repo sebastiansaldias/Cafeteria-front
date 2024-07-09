@@ -55,8 +55,7 @@ const Clientes = () => {
         const data = await response.json();
         setUsers(data);
       } catch (error) {
-        console.error('ERROR al obtener los Usuarios:', error);
-        alert('Ha ocurrido un error al obtener los Usuarios');
+        
       }
     }
 
