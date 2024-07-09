@@ -1,19 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../Components/Shared/Navbar';
 import Footer from '../Components/Shared/Footer';
-import Switch from '../Components/Switch';
 
 const Clientes = () => {
   const [users, setUsers] = useState([]);
+  const [loadingStates, setLoadingStates] = useState({});
   const accessToken = localStorage.getItem('token');
   const userRoles = JSON.parse(localStorage.getItem('roles')) || [];
   const API_URL = import.meta.env.VITE_URL_ACCESS;
+
+  async function handleCheckboxChange(username, currentState) {
+    const status = currentState ? 'disable' : 'enable';
+
+    try {
+      setLoadingStates(prevState => ({ ...prevState, [username]: true }));
+      const response = await fetch(`${API_URL}/api/auth/${username}/${status}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+        },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to update user status');
+      }
+
+      const data = await response.json();
+      alert(data.message);
+      setUsers(prevUsers => prevUsers.map(user => 
+        user.username === username ? { ...user, disabled: !currentState } : user
+      ));
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoadingStates(prevState => ({ ...prevState, [username]: false }));
+    }
+  }
 
   useEffect(() => {
     async function getUsers() {
       try {
         const response = await fetch(`${API_URL}/api/user/`, {
-          method: 'GET', // Especificar que es una solicitud GET
+          method: 'GET',
           headers: {
             'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json',
@@ -31,11 +60,7 @@ const Clientes = () => {
       }
     }
 
-    if (userRoles.includes('ADMIN')) {
-      getUsers();
-    } else {
-      alert('No tienes permiso para acceder a esta información.');
-    }
+   
   }, [API_URL, accessToken, userRoles]);
 
   return (
@@ -60,7 +85,13 @@ const Clientes = () => {
                 <td className="py-2 px-4 border-b border-gray-200">{user.email}</td>
                 <td className="py-2 px-4 border-b border-gray-200">
                   <div className="flex justify-center">
-                    <Switch username={user.username} state={user.disabled} token={accessToken} />
+                    <input
+                      type="checkbox"
+                      checked={!user.disabled}
+                      onChange={() => handleCheckboxChange(user.username, user.disabled)}
+                      disabled={!userRoles.includes('ADMIN') || loadingStates[user.username]}
+                    />
+                    {loadingStates[user.username] && <span className="ml-2 text-sm text-gray-500">Loading...</span>}
                   </div>
                 </td>
                 <td className="py-2 px-4 border-b border-gray-200">{user.locked ? 'Yes' : 'No'}</td>
