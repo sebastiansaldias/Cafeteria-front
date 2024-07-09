@@ -16,7 +16,7 @@ export default function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_URL_ACCESS;
+  const API_URL = "http://localhost:8080";
 
   useEffect(() => {
     const token = localStorage.getItem('token');

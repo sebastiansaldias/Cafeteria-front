@@ -7,13 +7,12 @@ const Clientes = () => {
   const [users, setUsers] = useState([]);
   const accessToken = localStorage.getItem('token');
   const userRoles = JSON.parse(localStorage.getItem('roles')) || [];
-  const API_URL = import.meta.env.VITE_URL_ACCESS;
+  const API_URL = "http://localhost:8080";
 
   useEffect(() => {
     async function getUsers() {
       try {
-        const response = await fetch(`${API_URL}/api/user/`, {
-          method: 'GET', // Especificar que es una solicitud GET
+        const response = await fetch(`http://localhost:8080/api/user/obtener`, { // Especificar que es una solicitud GET
           headers: {
             'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json',
@@ -30,13 +29,9 @@ const Clientes = () => {
         alert('Ha ocurrido un error al obtener los Usuarios');
       }
     }
-
-    if (userRoles.includes('ADMIN')) {
-      getUsers();
-    } else {
-      alert('No tienes permiso para acceder a esta información.');
-    }
-  }, [API_URL, accessToken, userRoles]);
+    getUsers();
+    
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
