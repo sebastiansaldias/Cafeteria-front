@@ -7,6 +7,7 @@ function Tarjetasinicio() {
         <div className="flex flex-wrap -m-4">
           <div className="p-4 lg:w-1/3">
             <div className="h-full bg-[#D3C4B5] bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+              <img className="w-full h-60 object-cover object-center mb-6" src="maquinacafeteria.jpg" alt="Nuestras Máquinas"/>
               <h2 className="tracking-widest text-xs title-font font-medium text-black mb-1">INFORMACIÓN</h2>
               <h1 className="title-font sm:text-2xl text-xl font-medium text-black mb-3">Nuestras Máquinas</h1>
               <p className="leading-relaxed mb-3 text-black">Experimenta la perfección en cada sorbo con nuestras máquinas de café avanzadas. Optimizadas para extraer el mejor aroma y sabor.</p>
@@ -33,8 +34,9 @@ function Tarjetasinicio() {
           </div>
           <div className="p-4 lg:w-1/3">
             <div className="h-full bg-[#D3C4B5] bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+              <img className="w-full h-60 object-cover object-center mb-6" src="granoscafe.jpg" alt="Nuestros Granos"/>
               <h2 className="tracking-widest text-xs title-font font-medium text-black mb-1">INFORMACIÓN</h2>
-              <h1 className="title-font sm:text-2xl text-xl font-medium text-blacke mb-3">Nuestros Granos</h1>
+              <h1 className="title-font sm:text-2xl text-xl font-medium text-black mb-3">Nuestros Granos</h1>
               <p className="leading-relaxed mb-3 text-black">Seleccionamos a mano los granos de café más finos de todo el mundo, garantizando una experiencia rica y compleja en cada taza.</p>
               <a className="text-black inline-flex items-center">Ver catálogo
                 <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -59,6 +61,7 @@ function Tarjetasinicio() {
           </div>
           <div className="p-4 lg:w-1/3">
             <div className="h-full bg-[#D3C4B5] bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+              <img className="w-full h-60 object-cover object-center mb-6" src="ubicacion.jpg" alt="Nuestras Sucursales"/>
               <h2 className="tracking-widest text-xs title-font font-medium text-black mb-1">INFORMACIÓN</h2>
               <h1 className="title-font sm:text-2xl text-xl font-medium text-black mb-3">Nuestras Sucursales</h1>
               <p className="leading-relaxed mb-3 text-black">Encuentra tu sucursal más cercana y disfruta de nuestro café excepcional en un ambiente acogedor. ¡Te esperamos!</p>

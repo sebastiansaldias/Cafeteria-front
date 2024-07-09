@@ -9,7 +9,7 @@ function AcercaDe() {
       <div className="container mx-auto px-5 py-24">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-[#4B2E39]">Acerca de Nosotros</h1>
-          <p className="mt-4 text-xl text-gray-700">Descubre la historia y la pasión detrás de Cafetería BenSal.</p>
+          <p className="mt-4 text-xl text-gray-700">Descubre la historia y la pasión detrás de Cafetería Bensal.</p>
         </div>
         <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between">
           <div className="lg:w-1/2 mb-12 lg:mb-0">
@@ -17,7 +17,7 @@ function AcercaDe() {
           </div>
           <div className="lg:w-1/2 lg:pl-12">
             <h2 className="text-2xl font-semibold text-[#4B2E39] mb-4">Nuestra Historia</h2>
-            <p className="mb-6 text-lg text-gray-700">Cafetería BenSal nació del amor por el café y el deseo de compartir esa pasión con nuestra comunidad. Desde nuestros humildes comienzos, hemos crecido hasta convertirnos en un punto de encuentro para los amantes del café en toda la región.</p>
+            <p className="mb-6 text-lg text-gray-700">Cafetería Bensal nació del amor por el café y el deseo de compartir esa pasión con nuestra comunidad. Desde nuestros humildes comienzos, hemos crecido hasta convertirnos en un punto de encuentro para los amantes del café en toda la región.</p>
             <h2 className="text-2xl font-semibold text-[#4B2E39] mb-4">Nuestra Misión</h2>
             <p className="mb-6 text-lg text-gray-700">Nuestra misión es ofrecer a nuestros clientes una experiencia única con cada taza de café, utilizando granos de la más alta calidad y técnicas de preparación expertas. Nos esforzamos por crear un ambiente acogedor donde todos se sientan bienvenidos.</p>
             <h2 className="text-2xl font-semibold text-[#4B2E39] mb-4">Nuestros Valores</h2>
